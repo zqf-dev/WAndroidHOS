@@ -1,0 +1,23 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    }
+  ,{
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },{
+      "name": "EntryAbility_label",
+      "value": "鸿蒙玩Android"
+    },{
+      "name": "bottom_text_home",
+      "value": "首页"
+    },{
+      "name": "bottom_text_square",
+      "value": "发现"
+    },{
+      "name": "bottom_text_me",
+      "value": "我的"
+    }]
+}

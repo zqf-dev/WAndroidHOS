@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "bottom_text_home",
+      "value": "Home"
+    },
+    {
+      "name": "bottom_text_square",
+      "value": "Find"
+    },
+    {
+      "name": "bottom_text_me",
+      "value": "Me"
+    }
+  ]
+}
