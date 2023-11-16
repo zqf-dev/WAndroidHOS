@@ -23,6 +23,22 @@
     {
       "name": "bottom_text_me",
       "value": "Me"
+    },
+    {
+      "name": "http_error_message",
+      "value": "Network request failed, please try later!"
+    },
+    {
+      "name": "page_none_msg",
+      "value": "Network loading failure"
+    },
+    {
+      "name": "prompt_message",
+      "value": "No more data"
+    },
+    {
+      "name": "dependency_reason",
+      "value": "Used to initiate network data requests."
     }
   ]
 }

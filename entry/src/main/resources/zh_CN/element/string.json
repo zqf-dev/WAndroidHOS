@@ -3,21 +3,42 @@
     {
       "name": "module_desc",
       "value": "模块描述"
-    }
-  ,{
+    },
+    {
       "name": "EntryAbility_desc",
       "value": "description"
-    },{
+    },
+    {
       "name": "EntryAbility_label",
       "value": "鸿蒙玩Android"
-    },{
+    },
+    {
       "name": "bottom_text_home",
       "value": "首页"
-    },{
+    },
+    {
       "name": "bottom_text_square",
       "value": "发现"
-    },{
+    },
+    {
       "name": "bottom_text_me",
       "value": "我的"
-    }]
+    },
+    {
+      "name": "http_error_message",
+      "value": "网络请求失败，请重试!"
+    },
+    {
+      "name": "page_none_msg",
+      "value": "网络加载失败"
+    },
+    {
+      "name": "prompt_message",
+      "value": "没有更多数据了"
+    },
+    {
+      "name": "dependency_reason",
+      "value": "用于发起网络数据请求"
+    }
+  ]
 }

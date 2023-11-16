@@ -23,8 +23,4 @@ export class Constants {
   static readonly BORDER_WIDTH: number = 0.5;
   static readonly COUNTDOWN: number = 5;
 
-  /**
-   * API
-   */
-  static readonly API = 'https://www.wanandroid.com'
 }
