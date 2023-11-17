@@ -23,4 +23,14 @@ export class Constants {
   static readonly BORDER_WIDTH: number = 0.5;
   static readonly COUNTDOWN: number = 5;
 
+  //圆角的RADIUS
+  static readonly BORDER_RADIUS = 12;
+  //tab页的宽
+  static readonly PAGE_WIDTH = '94.4%';
+  //banner的高
+  static readonly HEIGHT_BANNER = '27%';
+  //动画执行的时间.
+  static readonly DURATION_ADS = 200;
+  //滚动持续时间
+  static readonly SWIPER_TIME = 1500;
 }

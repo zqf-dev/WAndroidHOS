@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\zqf\\.ohos\\config\\auto_debug_WAndroidHOS_com.zqf.wandroidhos_70086000154657366.cer",
+          "storePassword": "0000001B4E8039A93831B1DD2B0F9B07369EEA241B030184D6CBCB80391519B44E6320B0760C0E5630E0BD",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B8A70A9B4CFE477D5B050D2922CD4F487F800B668C11F04398F0515A33F719449DED7363E2007E3",
+          "profile": "C:\\Users\\zqf\\.ohos\\config\\auto_debug_WAndroidHOS_com.zqf.wandroidhos_70086000154657366.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\zqf\\.ohos\\config\\auto_debug_WAndroidHOS_com.zqf.wandroidhos_70086000154657366.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [

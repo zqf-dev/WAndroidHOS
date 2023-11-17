@@ -3,7 +3,7 @@ import { get } from '../http/Request';
 import { Response } from '../http/Response';
 import BannerModel from '../model/BannerModel';
 
-export function getBannerList(): Promise<BannerModel[]> {
+export function getBanner(): Promise<BannerModel[]> {
   return new Promise(async (resolve: Function, reject: Function) => {
     get(API.banner).then((data: Response) => {
       if (data.errorCode === API.SERVER_CODE_SUCCESS) {
