@@ -1,3 +1,5 @@
+import { IBannerModel } from '../model/HomeEntity';
+
 export class Constants {
   static readonly SWIPER_DEFAULT_WIDTH: string = '66%';
   static readonly FULL_PERCENT: string = '100%';
@@ -33,4 +35,24 @@ export class Constants {
   static readonly DURATION_ADS = 200;
   //滚动持续时间
   static readonly SWIPER_TIME = 1500;
+  //TAG日志
+  static readonly TAG = 'Tag';
+  static readonly Article_LIST_WIDTH: string = '93.3%';
+  static readonly Article_LIST_MARGIN_LEFT: string = '3.3%';
+  static readonly Article_LIST_MARGIN_RIGHT: string = '3.3%';
+  static readonly Article_LIST_DIVIDER_STROKE_WIDTH: number = 0.5;
+  static readonly ten_percent = '10%'
+  static readonly twenty_percent = '20%'
+  static readonly twenty_five_percent = '25%'
+  static readonly thirty_percent = '30%'
+  static readonly forth_percent = '40%'
+  static readonly fifth_percent = '50%'
+  static readonly fs_5 = 5
+  static readonly fs_6 = 6
+  static readonly fs_8 = 10
+  static readonly fs_10 = 10
+  static readonly fs_11 = 11
+  static readonly fs_12 = 12
+  static readonly fs_16 = 16
+  static readonly fs_18 = 18
 }

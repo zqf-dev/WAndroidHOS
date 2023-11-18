@@ -1,4 +1,5 @@
 import { Constants } from '../utils/Constants';
+import { ArticleList } from '../view/ArticleList';
 import { Banner } from '../view/Banner';
 
 @Component
@@ -8,7 +9,8 @@ export struct Home {
       Column() {
         //广告页面
         Banner()
-        //List列表
+        //文章列表
+        ArticleList()
       }
       .width(Constants.FULL_SIZE)
     }

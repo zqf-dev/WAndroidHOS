@@ -1,4 +1,5 @@
 import http from '@ohos.net.http';
+import { Constants } from '../utils/Constants';
 import { API, ContentType } from './API';
 import { Response } from './Response';
 
@@ -9,6 +10,7 @@ import { Response } from './Response';
  */
 export function get(url: string): Promise<Response> {
   let httpRequest = http.createHttp();
+  console.log(Constants.TAG, url)
   let responseResult = httpRequest.request(url, {
     method: http.RequestMethod.GET,
     readTimeout: API.HTTP_READ_TIMEOUT,

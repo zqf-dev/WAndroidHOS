@@ -1,73 +1,59 @@
-import router from '@ohos.router';
+import { IBannerModel, HomeModel } from '../model/HomeEntity';
+import { IState } from '../model/IStatus';
 import { getBanner } from '../request/Home';
-import BannerModel from '../model/BannerModel';
 import { Constants } from '../utils/Constants';
 
-@Extend(Text) function textStyle(fontSize: number, fontWeight: number) {
-  .fontSize(fontSize)
-  .fontColor($r('app.color.start_window_background'))
-  .fontWeight(fontWeight)
-}
 
 @Component
 export struct Banner {
-  // Change the index value through a scheduled task to perform a round robin.
-  @State index: number = 0;
-  private swiperController: SwiperController = new SwiperController();
-  private list: BannerModel[] = []
-  private timerIds: number[] = []
+  private controller: SwiperController = new SwiperController();
+  @State list: HomeModel = new HomeModel()
 
-  //请求Banner数据
   requestBanner() {
-    getBanner().then((data: BannerModel[]) => {
-      this.list = data
+    getBanner().then((data: IBannerModel[]) => {
+      this.list.bannerData = [...data]
+      this.list.status = IState.Success
     }).catch((err: string | Resource) => {
-      console.log('Tag', err)
+      this.list.status = IState.Fail
     })
-  }
-
-  //启动计划任务
-  startPlay(swiperController: SwiperController): void {
-    let timerId = setInterval(() => {
-      swiperController.showNext();
-    }, Constants.SWIPER_TIME);
-    this.timerIds.push(timerId);
   }
 
   aboutToAppear() {
-    this.requestBanner();
-    this.startPlay(this.swiperController);
+    this.requestBanner()
   }
 
-  aboutToDisappear() {
-    this.timerIds.forEach((item: number) => {
-      clearTimeout(item);
-    })
+  @Builder LoadingLayout() {
+    Text('加载中...')
   }
 
-  build() {
-    Swiper(this.swiperController) {
-      ForEach(this.list, (item: BannerModel) => {
-        Stack({ alignContent: Alignment.TopStart }) {
-          Image(item.title)
-            .objectFit(ImageFit.Fill)
-            .height(Constants.FULL_SIZE)
-            .width(Constants.FULL_SIZE)
-            .borderRadius(Constants.BORDER_RADIUS)
-            .align(Alignment.Center)
-            .onClick(() => {
-              //点击跳转Web组件打开网页
-            })
-        }
-        .height(Constants.FULL_SIZE)
-        .width(Constants.FULL_SIZE)
-      }, (item: BannerModel) => JSON.stringify(item))
+  @Builder ShowData() {
+    Swiper(this.controller) {
+      ForEach(this.list.bannerData, (item: IBannerModel) => {
+        Image(item.imagePath)
+          .objectFit(ImageFit.Fill)
+          .height(Constants.FULL_SIZE)
+          .width(Constants.FULL_SIZE)
+          .borderRadius(Constants.fs_6)
+          .align(Alignment.Center)
+          .onClick(() => {
+          })
+      }, (item: IBannerModel, index?: number) => JSON.stringify(item) + index)
     }
     .width(Constants.PAGE_WIDTH)
     .height(Constants.HEIGHT_BANNER)
-    .index(this.index)
     .indicatorStyle({ selectedColor: $r('app.color.start_window_background') })
     .indicator(true)
+    .loop(true)
+    .margin({ top: 5 })
+    .autoPlay(true)
     .duration(Constants.DURATION_ADS)
+  }
+
+  build() {
+    if (this.list.status === IState.Loading) {
+      this.LoadingLayout()
+    } else {
+      this.ShowData()
+    }
   }
 }
