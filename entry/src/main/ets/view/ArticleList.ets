@@ -1,6 +1,7 @@
 import { Article, IArticle } from '../model/HomeEntity';
 import { getArticle, } from '../request/Home'
 import { Constants } from '../utils/Constants';
+import NoMoreLayout from './NoMoreLayout';
 
 @Component
 export struct ArticleList {
@@ -78,6 +79,11 @@ export struct ArticleList {
         .margin({ top: 10 })
         .borderRadius(Constants.BORDER_RADIUS)
       }, (item: IArticle, index?: number) => JSON.stringify(item) + index)
+
+      //加载更多/没有更多数据了
+      ListItem() {
+        NoMoreLayout()
+      }
     }
     .width(Constants.Article_LIST_WIDTH)
     .height(Constants.FULL_SIZE)

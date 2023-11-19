@@ -55,4 +55,7 @@ export class Constants {
   static readonly fs_12 = 12
   static readonly fs_16 = 16
   static readonly fs_18 = 18
+  static readonly NoMoreLayoutConstant_NORMAL_PADDING: number = 8;
+  static readonly NoMoreLayoutConstant_TITLE_FONT: string = '16fp';
+  static readonly CUSTOM_LAYOUT_HEIGHT: number = 70;
 }
