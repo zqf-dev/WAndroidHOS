@@ -58,4 +58,14 @@ export class Constants {
   static readonly NoMoreLayoutConstant_NORMAL_PADDING: number = 8;
   static readonly NoMoreLayoutConstant_TITLE_FONT: string = '16fp';
   static readonly CUSTOM_LAYOUT_HEIGHT: number = 70;
+
+  /**
+   * 刷新部分
+   */
+  static readonly RefreshLayout_MARGIN_LEFT: string = '40%';
+  static readonly RefreshLayout_TEXT_MARGIN_BOTTOM: number = 1;
+  static readonly RefreshLayout_TEXT_MARGIN_LEFT: number = 7;
+  static readonly RefreshLayout_TEXT_FONT_SIZE: number = 17;
+  static readonly RefreshLayout_IMAGE_WIDTH: number = 18;
+  static readonly RefreshLayout_IMAGE_HEIGHT: number = 18;
 }

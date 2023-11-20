@@ -23,7 +23,7 @@ export struct Banner {
   }
 
   @Builder LoadingLayout() {
-    Text('加载中...')
+    Text('加载中...').width('100%').height('100%').textAlign(TextAlign.Center)
   }
 
   @Builder ShowData() {
