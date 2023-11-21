@@ -39,6 +39,63 @@
     {
       "name": "dependency_reason",
       "value": "用于发起网络数据请求"
+    },
+
+    {
+      "name": "header_pulling",
+      "value": "下拉可以刷新"
+    },
+    {
+      "name": "header_refreshing",
+      "value": "正在刷新…"
+    },
+    {
+      "name": "header_loading",
+      "value": "等待底部加载完成…"
+    },
+    {
+      "name": "header_release",
+      "value": "释放立即刷新"
+    },
+    {
+      "name": "header_finish",
+      "value": "刷新完成"
+    },
+    {
+      "name": "header_failed",
+      "value": "刷新失败"
+    },
+    {
+      "name": "header_update",
+      "value": "上次更新 M-d HH:mm"
+    },
+    {
+      "name": "footer_pulling",
+      "value": "上拉加载更多"
+    },
+    {
+      "name": "footer_release",
+      "value": "释放立即加载"
+    },
+    {
+      "name": "footer_loading",
+      "value": "正在加载…"
+    },
+    {
+      "name": "footer_refreshing",
+      "value": "等待头部刷新完成…"
+    },
+    {
+      "name": "footer_finish",
+      "value": "加载完成"
+    },
+    {
+      "name": "footer_failed",
+      "value": "加载失败"
+    },
+    {
+      "name": "footer_nothing",
+      "value": "没有更多数据了"
     }
   ]
 }

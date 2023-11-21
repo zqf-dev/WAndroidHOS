@@ -1,4 +1,4 @@
-import { Find } from '../component/FindComponent';
+import { Square } from '../component/SquareComponent';
 import { Home } from '../component/HomeComponent';
 import { Me } from '../component/MeComponent';
 import { BottomTabsList } from '../model/BottomTabsModel';
@@ -43,7 +43,7 @@ struct Index {
             if (index === 0) {
               Home()
             } else if (index === 1) {
-              Find()
+              Square()
             } else if (index === 2) {
               Me()
             }

@@ -68,4 +68,6 @@ export class Constants {
   static readonly RefreshLayout_TEXT_FONT_SIZE: number = 17;
   static readonly RefreshLayout_IMAGE_WIDTH: number = 18;
   static readonly RefreshLayout_IMAGE_HEIGHT: number = 18;
+  static readonly Y_OFF_SET_COEFFICIENT: number = 0.1;
+  static readonly ANIMATION_DURATION: number = 2000;
 }
