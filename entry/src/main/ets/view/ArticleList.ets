@@ -1,11 +1,7 @@
 import router from '@ohos.router';
-import { HRefresh } from '../component/refresh/HRefresh';
-import { RefreshController } from '../component/refresh/RefreshController';
 import { Article, IArticle } from '../model/HomeEntity';
 import { getArticle, } from '../request/Home'
 import { Constants } from '../utils/Constants';
-import LoadMoreLayout, { MoreCls, touchEvent } from './LoadMoreLayout';
-import NoMoreLayout from './NoMoreLayout';
 
 @Component
 export struct ArticleList {
@@ -23,8 +19,8 @@ export struct ArticleList {
    */
   reqArticle() {
     getArticle(this.page).then((res: Article) => {
+      this.list.datas = res.datas
       this.over = res.over
-      this.list.datas.concat(...res.datas)
     })
   }
 
@@ -86,37 +82,22 @@ export struct ArticleList {
               .fontSize(Constants.fs_11)
           }
         }
-        .backgroundColor($r('app.color.font_color_white'))
-        .margin({ top: 10 })
-        .borderRadius(Constants.BORDER_RADIUS)
         .onClick(() => {
           router.pushUrl({
-            url: '../pages/DetailsWeb',
+            url: 'pages/DetailsWeb',
             params: {
               url: item.link
             }
           })
         })
-      }, item => item) //赋值一个key标识
-
-      //加载更多/没有更多数据了
-      ListItem() {
-        if (this.over) {
-          NoMoreLayout()
-        } else {
-          LoadMoreLayout()
-        }
-      }
+        .backgroundColor($r('app.color.font_color_white'))
+        .margin({ top: 10 })
+        .borderRadius(Constants.BORDER_RADIUS)
+      }, (item: IArticle, index?: number) => JSON.stringify(item) + index) //赋值一个key标识
     }
     .onScrollIndex((start: number, end: number) => {
-      // 监听List滚动的位置
-      MoreCls.startIndex = start;
-      MoreCls.endIndex = end;
+      console.log('onScrollIndex: ', start, end)
     })
-    .onTouch((event: TouchEvent) => {
-      if (event && !this.over) touchEvent(this.list, event)
-    })
-    .offset({ x: 0, y: `${MoreCls.offsetY}px` })
     .width(Constants.Article_LIST_WIDTH)
     .height(Constants.FULL_SIZE)
     .margin({ left: Constants.Article_LIST_MARGIN_LEFT, right: Constants.Article_LIST_MARGIN_RIGHT })

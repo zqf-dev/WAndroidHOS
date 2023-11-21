@@ -27,7 +27,7 @@ export default struct LoadMoreLayout {
   }
 }
 
-export class MoreCls {
+export class LMCls {
   static isCanLoadMore: boolean = false;
   static downY = 0;
   static lastMoveY = 0;
@@ -46,28 +46,28 @@ export class MoreCls {
 export function touchEvent(list: Article, event: TouchEvent) {
   switch (event.type) {
     case TouchType.Down:
-      MoreCls.downY = event.touches[0].y;
-      MoreCls.lastMoveY = event.touches[0].y;
+      LMCls.downY = event.touches[0].y;
+      LMCls.lastMoveY = event.touches[0].y;
       break;
     case TouchType.Move:
-      if ((MoreCls.isRefreshing === true) || (MoreCls.isLoading === true)) {
+      if ((LMCls.isRefreshing === true) || (LMCls.isLoading === true)) {
         return;
       }
-      if (MoreCls.isCanLoadMore === true && !list.over) {
-        if (MoreCls.endIndex === list.datas.length - 1 || MoreCls.endIndex === list.datas.length) {
-          MoreCls.offsetY = event.touches[0].y - MoreCls.downY;
-          if (Math.abs(MoreCls.offsetY) > vp2px(Constants.CUSTOM_LAYOUT_HEIGHT) / 2) {
-            MoreCls.isCanLoadMore = true;
-            MoreCls.offsetY = -vp2px(Constants.CUSTOM_LAYOUT_HEIGHT) + MoreCls.offsetY * Constants.Y_OFF_SET_COEFFICIENT;
+      if (LMCls.isCanLoadMore === true && !list.over) {
+        if (LMCls.endIndex === list.datas.length - 1 || LMCls.endIndex === list.datas.length) {
+          LMCls.offsetY = event.touches[0].y - LMCls.downY;
+          if (Math.abs(LMCls.offsetY) > vp2px(Constants.CUSTOM_LAYOUT_HEIGHT) / 2) {
+            LMCls.isCanLoadMore = true;
+            LMCls.offsetY = -vp2px(Constants.CUSTOM_LAYOUT_HEIGHT) + LMCls.offsetY * Constants.Y_OFF_SET_COEFFICIENT;
           }
         }
       }
-      MoreCls.lastMoveY = event.touches[0].y;
+      LMCls.lastMoveY = event.touches[0].y;
       break;
     case TouchType.Cancel:
       break;
     case TouchType.Up:
-      if ((MoreCls.isRefreshing === true) || (MoreCls.isLoading === true)) {
+      if ((LMCls.isRefreshing === true) || (LMCls.isLoading === true)) {
         return;
       }
       touchUpLoadMore()
@@ -81,9 +81,9 @@ export function touchUpLoadMore() {
   animateTo({
     duration: Constants.ANIMATION_DURATION,
   }, () => {
-    MoreCls.offsetY = 0;
+    LMCls.offsetY = 0;
   })
-  if ((MoreCls.isCanLoadMore === true)) {
+  if ((LMCls.isCanLoadMore === true)) {
     closeLoadMore();
   } else {
     closeLoadMore();
@@ -91,6 +91,6 @@ export function touchUpLoadMore() {
 }
 
 export function closeLoadMore() {
-  MoreCls.isCanLoadMore = false;
-  MoreCls.isLoading = false;
+  LMCls.isCanLoadMore = false;
+  LMCls.isLoading = false;
 }
