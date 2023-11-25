@@ -1,10 +1,11 @@
 import router from '@ohos.router'
 import hilog from '@ohos.hilog'
+import { Constants } from '../utils/Constants'
 
 @Entry
 @Component
 struct Launch {
-  @State message: string = 'WanAndroid HarmonyOS'
+  @State message: string = '玩Android\nHarmonyOS版'
 
   jumpToMain() {
     setTimeout(() => {
@@ -13,33 +14,41 @@ struct Launch {
   }
 
   aboutToAppear() {
+    this.jumpToMain()
     hilog.info(0x011, 'Tag', 'aboutToAppear')
   }
 
-  aboutToDisappear() {
-    hilog.info(0x011, 'splash', 'aboutToDisappear')
-  }
-
   onPageShow() {
-    this.jumpToMain()
     hilog.info(0x011, 'splash', 'onPageShow')
-  }
-
-  onPageHide() {
-    hilog.info(0x011, 'splash', 'onPageHide')
-  }
-
-  onBackPress() {
-    hilog.info(0x011, 'splash', 'onBackPress')
   }
 
   build() {
     Flex({
-      justifyContent: FlexAlign.Center,
-      alignItems: ItemAlign.Center
+      alignItems: ItemAlign.Center,
+      direction: FlexDirection.Column
     }) {
-      Text(this.message).fontSize(50)
-    }.width('100%')
-    .height('100%')
+      Stack() {
+        Text(this.message)
+          .fontSize(30)
+          .width(200)
+          .textAlign(TextAlign.Center)
+          .margin({ top: px2vp(300) })
+          .fontColor($r('app.color.font_color_white'))
+          .lineHeight(40)
+      }.height('97%').alignContent(Alignment.TopStart)
+
+      Text('https://github.com/zqf-dev')
+        .fontColor($r('app.color.font_color_white'))
+        .width('100%')
+        .fontSize(px2vp(30))
+        .textAlign(TextAlign.Center)
+    }
+    .linearGradient({
+      direction: 180,
+      repeating: false,
+      colors: [['#FF03DAC5', 0.0], ['#55C7FB', 1]]
+    })
+    .width(Constants.FULL_PERCENT)
+    .height(Constants.FULL_PERCENT)
   }
 }
