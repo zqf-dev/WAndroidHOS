@@ -11,7 +11,7 @@ struct Index {
   @State @Watch('onIndexChange') bottomTabIndex: number = 0;
   private controller: TabsController = new TabsController()
 
-  @Builder TabBuild(index: number, name: string) {
+  @Builder TabBuild(index: number) {
     Column() {
       Image(this.bottomTabIndex === index ? BottomTabsList[index].iconSelected : BottomTabsList[index].icon)
         .width(Constants.ICON_SIZE)
@@ -38,7 +38,7 @@ struct Index {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.End, justifyContent: FlexAlign.End }) {
       Tabs({ barPosition: BarPosition.End, index: 0, controller: this.controller }) {
-        ForEach(this.data, (item, index) => {
+        ForEach(this.data, (_, index) => {
           TabContent() {
             if (index === 0) {
               Home()
@@ -47,7 +47,7 @@ struct Index {
             } else if (index === 2) {
               Me()
             }
-          }.tabBar(this.TabBuild(index, item))
+          }.tabBar(this.TabBuild(index))
         })
       }
       .width(Constants.FULL_PERCENT)

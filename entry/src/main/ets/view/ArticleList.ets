@@ -19,8 +19,12 @@ export struct ArticleList {
    */
   reqArticle() {
     getArticle(this.page).then((res: Article) => {
-      this.list.datas = res.datas
       this.over = res.over
+      if (this.list && this.list.datas && this.list.datas.length > 0) {
+        this.list.datas = this.list.datas.concat(res.datas)
+        return
+      }
+      this.list.datas = res.datas
     })
   }
 
@@ -96,7 +100,10 @@ export struct ArticleList {
       }, (item: IArticle, index?: number) => JSON.stringify(item) + index) //赋值一个key标识
     }
     .onScrollIndex((start: number, end: number) => {
-      console.log('onScrollIndex: ', start, end)
+      if (this.list.datas && end == this.list.datas.length - 1) {
+        this.page++;
+        this.reqArticle()
+      }
     })
     .width(Constants.Article_LIST_WIDTH)
     .height(Constants.FULL_SIZE)
