@@ -1,3 +1,5 @@
+import { MeListBean } from '../model/MeListBean';
+
 export class Constants {
   static readonly SWIPER_DEFAULT_WIDTH: string = '66%';
   static readonly FULL_PERCENT: string = '100%';
@@ -63,25 +65,14 @@ export class Constants {
   static readonly RefreshLayout_IMAGE_HEIGHT: number = 18;
   static readonly Y_OFF_SET_COEFFICIENT: number = 0.1;
   static readonly ANIMATION_DURATION: number = 2000;
-  static readonly pxvp = [[
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19
-  ]]
+  static readonly MeListData: MeListBean[] = [
+    { id: 1, name: '我的积分', img: $r('app.media.score') },
+    { id: 2, name: '我的分享', img: $r('app.media.share') },
+    { id: 3, name: '我的收藏', img: $r('app.media.collection') },
+    { id: 4, name: '阅读历史', img: $r('app.media.read_record') },
+    { id: 5, name: '关于作者', img: $r('app.media.about') },
+    { id: 6, name: '系统设置', img: $r('app.media.system') },
+  ]
+  // Key-Value键值型的数据处理
+  static preferences: any = null
 }

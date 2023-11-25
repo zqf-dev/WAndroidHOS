@@ -1,33 +1,45 @@
+import { preferences } from '../entryability/EntryAbility'
+import { Constants } from '../utils/Constants'
+
 @Entry
 @Component
 struct Login {
   build() {
-    Flex({
-      direction: FlexDirection.Row,
-      wrap: FlexWrap.Wrap,
-    }) {
+    Navigation() {
       Flex({
-        justifyContent: FlexAlign.SpaceBetween
+        direction: FlexDirection.Row,
+        wrap: FlexWrap.Wrap,
       }) {
-        Text('账号：').width(80)
-        TextInput({
-          placeholder: '请输入账号'
-        }).type(InputType.PhoneNumber)
-      }
-      Flex({
-        justifyContent: FlexAlign.SpaceBetween,
-        alignItems: ItemAlign.Center
-      }) {
-        Text('密码：').width('20%')
-        TextInput({
-          placeholder: '请输入密码'
-        }).type(InputType.Password)
-      }.margin({top: 20})
+        Flex({
+          justifyContent: FlexAlign.SpaceBetween,
+          alignItems: ItemAlign.Center
+        }) {
+          Text('账号：').width('20%')
+          TextInput({ placeholder: '请输入账号'
+          }).type(InputType.PhoneNumber)
+        }
 
-      Button('登录').width('100%').margin({ top: 30 })
+        Flex({
+          justifyContent: FlexAlign.SpaceBetween,
+          alignItems: ItemAlign.Center
+        }) {
+          Text('密码：').width('20%')
+          TextInput({
+            placeholder: '请输入密码'
+          }).type(InputType.Password)
+        }.margin({ top: 20 })
+
+        Button('登录').width('100%').margin({ top: 30 })
+          .onClick(() => {
+            //点击
+          })
+      }
+      .padding(20)
+      .width('100%')
+      .height('100%')
     }
-    .padding(10)
-    .width('100%')
-    .height('100%')
+    .title('登录')
+    .hideToolBar(false)
+    .titleMode(NavigationTitleMode.Mini)
   }
 }
