@@ -13,6 +13,43 @@
 
 | ![](screenshot/1.png) | ![](screenshot/2.png) | ![](screenshot/3.png) |
 | --------------------- | --------------------- | --------------------- |
+| ![](screenshot/4.png) | ![](screenshot/5.png) | ![](screenshot/6.png) |
+
+
+
+## 更新日志
+
+预计更新：
+
+- 下拉刷新上拉加载更多组件
+- 增加数据保存AppStorage使用
+- 完成发现页面UI增加流式布局
+- JS Bridge使用
+- 完善http网络请求
+
+v1.0.0 2023.11.26
+
+- 完成我的页面UI
+
+- 启动页的UI增加渐变用法
+
+- 登录页面容器布局**Row**和**Column**细化用法
+
+- 页面传值**@State**父子组件用法
+
+- 增加**Web**组件页面加载使用
+
+- 增加**Toast**的用法
+
+- **Navigation**的用法
+
+- 已反馈开放平台记录发现的bug：
+
+  Text组件内使用Span子组件不能控制Span的visibility状态
+
+  TextInput组件在外部改变ype的InputType.Password后会将text值清空
+
+  
 
 ## 后续跟进计划
 
