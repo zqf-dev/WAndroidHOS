@@ -52,19 +52,10 @@ export class Constants {
   static readonly fs_18 = 18
   static readonly NoMoreLayoutConstant_NORMAL_PADDING: number = 8;
   static readonly NoMoreLayoutConstant_TITLE_FONT: string = '16fp';
-  static readonly CUSTOM_LAYOUT_HEIGHT: number = 70;
 
   /**
    * 刷新部分
    */
-  static readonly RefreshLayout_MARGIN_LEFT: string = '40%';
-  static readonly RefreshLayout_TEXT_MARGIN_BOTTOM: number = 1;
-  static readonly RefreshLayout_TEXT_MARGIN_LEFT: number = 7;
-  static readonly RefreshLayout_TEXT_FONT_SIZE: number = 17;
-  static readonly RefreshLayout_IMAGE_WIDTH: number = 18;
-  static readonly RefreshLayout_IMAGE_HEIGHT: number = 18;
-  static readonly Y_OFF_SET_COEFFICIENT: number = 0.1;
-  static readonly ANIMATION_DURATION: number = 2000;
   static readonly MeListData: MeListBean[] = [
     { id: 1, name: '我的积分', img: $r('app.media.score') },
     { id: 2, name: '我的分享', img: $r('app.media.share') },

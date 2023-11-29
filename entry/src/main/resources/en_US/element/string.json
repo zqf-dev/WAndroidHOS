@@ -25,6 +25,30 @@
       "value": "Me"
     },
     {
+      "name": "pull_up_load_text",
+      "value": "Loading in..."
+    },
+    {
+      "name": "pull_down_refresh_text",
+      "value": "The drop-down refresh"
+    },
+    {
+      "name": "release_refresh_text",
+      "value": "Loosen the refresh"
+    },
+    {
+      "name": "refreshing_text",
+      "value": "Is refreshing"
+    },
+    {
+      "name": "refresh_success_text",
+      "value": "Refresh the success"
+    },
+    {
+      "name": "refresh_fail_text",
+      "value": "Refresh the failure"
+    },
+    {
       "name": "http_error_message",
       "value": "Network request failed, please try later!"
     },
@@ -39,62 +63,6 @@
     {
       "name": "dependency_reason",
       "value": "Used to initiate network data requests."
-    },
-    {
-      "name": "header_pulling",
-      "value": "Pull Down To Refresh"
-    },
-    {
-      "name": "header_refreshing",
-      "value": "Release To Refresh"
-    },
-    {
-      "name": "header_loading",
-      "value": "Refreshing…"
-    },
-    {
-      "name": "header_release",
-      "value": "Wait For Loading…"
-    },
-    {
-      "name": "header_finish",
-      "value": "Refresh Success"
-    },
-    {
-      "name": "header_failed",
-      "value": "Refresh Failed"
-    },
-    {
-      "name": "header_update",
-      "value": "Last Update M-d HH:mm"
-    },
-    {
-      "name": "footer_pulling",
-      "value": "Pull Up To Load More"
-    },
-    {
-      "name": "footer_release",
-      "value": "Release To Load More"
-    },
-    {
-      "name": "footer_loading",
-      "value": "Loading…"
-    },
-    {
-      "name": "footer_refreshing",
-      "value": "Wait For Refreshing…"
-    },
-    {
-      "name": "footer_finish",
-      "value": "Load Success"
-    },
-    {
-      "name": "footer_failed",
-      "value": "Load Failed"
-    },
-    {
-      "name": "footer_nothing",
-      "value": "No More Data"
     }
   ]
 }

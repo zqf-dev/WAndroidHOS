@@ -1,4 +1,7 @@
 import router from '@ohos.router';
+import { listTouchEvent } from '../component/refresh/PullRefresh';
+import { RefreshConst } from '../component/refresh/RefreshConst';
+import RefreshLayout from '../component/refresh/RefreshLayout';
 import { Article, IArticle } from '../model/HomeEntity';
 import { getArticle, } from '../request/Home'
 import { Constants } from '../utils/Constants';
@@ -29,8 +32,12 @@ export struct ArticleList {
   }
 
   @Builder showData() {
-    //下拉刷新
     List() {
+      //下拉刷新组件
+      ListItem() {
+        RefreshLayout()
+      }
+      //文章部分
       ForEach(this.list.datas, (item: IArticle) => {
         ListItem() {
           Flex({ direction: FlexDirection.Column }) {
@@ -99,11 +106,11 @@ export struct ArticleList {
         .borderRadius(Constants.BORDER_RADIUS)
       }, (item: IArticle, index?: number) => JSON.stringify(item) + index) //赋值一个key标识
     }
+    .offset({ x: 0, y: `${RefreshConst.offsetY}${RefreshConst.LIST_OFFSET_UNIT}` })
     .onScrollIndex((start: number, end: number) => {
-      if (this.list.datas && end == this.list.datas.length - 1) {
-        this.page++;
-        this.reqArticle()
-      }
+      // 监控滑动的index和当前List值是否到底
+      RefreshConst.startIndex = start;
+      RefreshConst.endIndex = end;
     })
     .width(Constants.Article_LIST_WIDTH)
     .height(Constants.FULL_SIZE)
@@ -118,6 +125,16 @@ export struct ArticleList {
   }
 
   build() {
-    this.showData()
+    Column() {
+      this.showData()
+    }
+    .width(Constants.FULL_PERCENT)
+    .height(Constants.FULL_PERCENT)
+    .justifyContent(FlexAlign.Center)
+    .onTouch((event: TouchEvent | undefined) => {
+      if (event) {
+        listTouchEvent(event);
+      }
+    })
   }
 }
