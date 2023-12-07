@@ -1,16 +1,4 @@
 export class RefreshConst {
-  static startIndex = 0;
-  static endIndex = 0;
-  static offsetY = 0;
-  static downY = 0;
-  static lastMoveY = 0;
-  static isVisiblePullUpLoad: boolean = false;
-  static isVisiblePullDown: boolean = false;
-  static isCanRefresh: boolean = false;
-  static isRefreshing: boolean = false;
-  static isLoading: boolean = false;
-  static isPullRefreshOperation: boolean = false;
-  static isCanLoadMore: boolean = false;
   static CUSTOM_LAYOUT_HEIGHT: number = 70;
   static pullDownRefreshText: Resource = $r('app.string.pull_down_refresh_text');
   static pullDownRefreshImage: Resource = $r('app.media.ic_pull_down_refresh');
@@ -28,6 +16,8 @@ export class RefreshConst {
   static readonly RefreshConstant_DELAY_PULL_DOWN_REFRESH: number = 50;
   static readonly RefreshConstant_CLOSE_PULL_DOWN_REFRESH_TIME: number = 150;
   static readonly RefreshConstant_DELAY_SHRINK_ANIMATION_TIME: number = 500;
+  static readonly NoMoreLayoutConstant_NORMAL_PADDING: number = 8;
+  static readonly NoMoreLayoutConstant_TITLE_FONT: string = '16fp';
   static readonly LIST_OFFSET_UNIT: string = 'px';
 }
 

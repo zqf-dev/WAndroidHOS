@@ -11,6 +11,7 @@ export class Constants {
   static readonly CONTENT_WIDTH_PERCENT: string = '87%';
   static readonly SEARCHBAR_WIDTH: string = '91.1%'
   static readonly IMAGE_HEIGHT_MIN: string = '78%';
+  static readonly LIST_HEIGHT: string = '90%';
 
   //TabItem
   static readonly HOME_TITLE: string = '首页';
@@ -50,8 +51,6 @@ export class Constants {
   static readonly fs_12 = 12
   static readonly fs_16 = 16
   static readonly fs_18 = 18
-  static readonly NoMoreLayoutConstant_NORMAL_PADDING: number = 8;
-  static readonly NoMoreLayoutConstant_TITLE_FONT: string = '16fp';
 
   /**
    * 刷新部分

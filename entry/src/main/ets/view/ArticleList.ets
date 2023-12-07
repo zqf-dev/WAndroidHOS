@@ -1,7 +1,10 @@
 import router from '@ohos.router';
+import LoadMoreLayout from '../component/refresh/LoadMoreLayout';
+import NoMoreLayout from '../component/refresh/NoMoreLayout';
 import { listTouchEvent } from '../component/refresh/PullRefresh';
 import { RefreshConst } from '../component/refresh/RefreshConst';
 import RefreshLayout from '../component/refresh/RefreshLayout';
+import RefreshModel, { RefreshLoadLayoutClass } from '../component/refresh/RefreshModel';
 import { Article, IArticle } from '../model/HomeEntity';
 import { getArticle, } from '../request/Home'
 import { Constants } from '../utils/Constants';
@@ -10,8 +13,8 @@ import { Constants } from '../utils/Constants';
 export struct ArticleList {
   @State page: number = 0;
   @State list: Article = new Article()
-  @State isRefreshing: boolean = false
   @State over: boolean = true
+  @State refreshModel: RefreshModel = new RefreshModel();
 
   aboutToAppear() {
     this.reqArticle()
@@ -35,7 +38,11 @@ export struct ArticleList {
     List() {
       //下拉刷新组件
       ListItem() {
-        RefreshLayout()
+        RefreshLayout({
+          rlc: new RefreshLoadLayoutClass(this.refreshModel.isVisiblePullDown
+            , this.refreshModel.pullDownRefreshImage, this.refreshModel.pullDownRefreshText
+            , this.refreshModel.pullDownRefreshHeight)
+        })
       }
       //文章部分
       ForEach(this.list.datas, (item: IArticle) => {
@@ -105,36 +112,44 @@ export struct ArticleList {
         .margin({ top: 10 })
         .borderRadius(Constants.BORDER_RADIUS)
       }, (item: IArticle, index?: number) => JSON.stringify(item) + index) //赋值一个key标识
+
+      //加载更多
+      ListItem() {
+        if (this.refreshModel.hasMore) {
+          LoadMoreLayout({ rlc: new RefreshLoadLayoutClass(this.refreshModel.isVisiblePullUpLoad
+            , this.refreshModel.pullUpLoadImage, this.refreshModel.pullUpLoadText
+            , this.refreshModel.pullUpLoadHeight) })
+        } else {
+          NoMoreLayout()
+        }
+      }
     }
-    .offset({ x: 0, y: `${RefreshConst.offsetY}${RefreshConst.LIST_OFFSET_UNIT}` })
-    .onScrollIndex((start: number, end: number) => {
-      // 监控滑动的index和当前List值是否到底
-      RefreshConst.startIndex = start;
-      RefreshConst.endIndex = end;
-    })
     .width(Constants.Article_LIST_WIDTH)
-    .height(Constants.FULL_SIZE)
-    .margin({ left: Constants.Article_LIST_MARGIN_LEFT, right: Constants.Article_LIST_MARGIN_RIGHT })
+    .height(Constants.LIST_HEIGHT)
+    .margin({ left: Constants.Article_LIST_MARGIN_LEFT,
+      right: Constants.Article_LIST_MARGIN_RIGHT})
+    .padding({ bottom: Constants.BAR_HEIGHT })
     .backgroundColor($r('app.color.font_color_white'))
     .divider({
       color: '#E2E2E2',
       strokeWidth: Constants.Article_LIST_DIVIDER_STROKE_WIDTH,
       endMargin: Constants.Article_LIST_MARGIN_RIGHT
     })
+    .offset({ x: 0, y: `${this.refreshModel.offsetY}${RefreshConst.LIST_OFFSET_UNIT}` })
+    .onScrollIndex((start: number, end: number) => {
+      // 监控滑动的index和当前List值是否到底
+      this.refreshModel.startIndex = start;
+      this.refreshModel.endIndex = end;
+    })
+    .onTouch((event: TouchEvent | undefined) => {
+      if (event) {
+        listTouchEvent(event, this.list, this.refreshModel);
+      }
+    })
     .edgeEffect(EdgeEffect.None)
   }
 
   build() {
-    Column() {
-      this.showData()
-    }
-    .width(Constants.FULL_PERCENT)
-    .height(Constants.FULL_PERCENT)
-    .justifyContent(FlexAlign.Center)
-    .onTouch((event: TouchEvent | undefined) => {
-      if (event) {
-        listTouchEvent(event);
-      }
-    })
+    this.showData()
   }
 }
