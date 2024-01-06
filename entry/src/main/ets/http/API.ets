@@ -5,6 +5,13 @@ export class API {
   static readonly banner = API.Url + '/banner/json'
   //文章
   static readonly article = API.Url + '/article/list/'
+  //体系
+  static readonly tree = API.Url + '/tree/json'
+  //导航
+  static readonly nav = API.Url + '/navi/json'
+  //登录
+  static readonly login = API.Url + "/user/login"
+
   //读取超时
   static readonly HTTP_READ_TIMEOUT = 10 * 1000
   /**
@@ -18,5 +25,6 @@ export class API {
 }
 
 export const enum ContentType {
-  JSON = 'application/json'
+  JSON = 'application/json',
+  formUrlencoded = 'application/x-www-form-urlencoded '
 }

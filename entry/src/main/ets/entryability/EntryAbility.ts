@@ -3,7 +3,7 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import data_preferences from '@ohos.data.preferences';
 
-export let preferences = null
+export var preferences: data_preferences.Preferences = null;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {

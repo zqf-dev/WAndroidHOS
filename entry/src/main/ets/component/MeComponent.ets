@@ -2,23 +2,34 @@ import Prompt from '@system.prompt';
 import router from '@ohos.router';
 import { MeListBean } from '../model/MeListBean';
 import { Constants } from '../utils/Constants';
-import preferences from '@ohos.data.preferences';
-import EntryAbility from '../entryability/EntryAbility';
+import { preferences } from '../entryability/EntryAbility'
 
 @Component
 export struct Me {
+  @State name: string = ''
+
+  aboutToAppear() {
+    let pf = preferences.get('username', '');
+    pf.then((data) => {
+      this.name = data.toString()
+    }).catch((err) => {
+      console.log(Constants.TAG, err)
+    })
+  }
+
   build() {
     Column() {
       Column() {
         Image($r('app.media.ic_avatar')).width(80)
           .margin({ top: 60, bottom: 10 })
-        Text('去登录').fontSize(18).fontColor($r('app.color.font_color_white'))
-          .onClick(() => {
-            router.pushUrl({
-              url: 'pages/Login'
-            })
-          })
+        Text(this.name ? this.name : '去登录').fontSize(18).fontColor($r('app.color.font_color_white'))
       }
+      .onClick(() => {
+        if (this.name) return
+        router.pushUrl({
+          url: 'pages/Login'
+        })
+      })
       .backgroundColor($r('app.color.launch_bg_color'))
       .width(Constants.FULL_PERCENT)
       .height(200)

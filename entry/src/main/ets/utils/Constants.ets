@@ -51,10 +51,11 @@ export class Constants {
   static readonly fs_12 = 12
   static readonly fs_16 = 16
   static readonly fs_18 = 18
+  static readonly SELECT_TEXT_FONT_SIZE = 20
+  static readonly UN_SELECT_TEXT_FONT_SIZE = 16
+  static readonly SQUARE_TABS_HEIGHT: string = '7.2%';
 
-  /**
-   * 刷新部分
-   */
+
   static readonly MeListData: MeListBean[] = [
     { id: 1, name: '我的积分', img: $r('app.media.score') },
     { id: 2, name: '我的分享', img: $r('app.media.share') },
@@ -65,4 +66,7 @@ export class Constants {
   ]
   // Key-Value键值型的数据处理
   static preferences: any = null
+
+  static storage: LocalStorage;
+
 }

@@ -95,7 +95,9 @@ export function touchMovePullRefresh(event: TouchEvent, refresh: RefreshModel) {
 }
 
 export function touchMoveLoadMore(refresh: RefreshModel, list: Article, event: TouchEvent) {
-  if (refresh.endIndex === list.datas.length - 1 || refresh.endIndex === list.datas.length) {
+  if (list && list.datas && list.datas.length > 0
+  && (refresh.endIndex === list.datas.length - 1
+  || refresh.endIndex === list.datas.length)) {
     refresh.offsetY = event.touches[0].y - refresh.downY;
     if (Math.abs(refresh.offsetY) > vp2px(refresh.pullUpLoadHeight) / 2) {
       refresh.isCanLoadMore = true;

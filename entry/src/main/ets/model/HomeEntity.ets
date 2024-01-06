@@ -13,6 +13,8 @@ export class IBannerModel {
   id?: number = 0;
   title?: string = '';
   imagePath?: string = '';
+  url?: string = '';
+  type?: number = 0;
 }
 
 export class Article {

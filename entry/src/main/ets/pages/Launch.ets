@@ -2,6 +2,7 @@ import router from '@ohos.router'
 import hilog from '@ohos.hilog'
 import { Constants } from '../utils/Constants'
 
+
 @Entry
 @Component
 struct Launch {
@@ -14,6 +15,7 @@ struct Launch {
   }
 
   aboutToAppear() {
+    AppStorage.SetOrCreate("isLogin", false)
     this.jumpToMain()
     hilog.info(0x011, 'Tag', 'aboutToAppear')
   }

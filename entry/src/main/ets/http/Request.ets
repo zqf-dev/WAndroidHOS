@@ -1,4 +1,5 @@
 import http from '@ohos.net.http';
+import HashMap from '@ohos.util.HashMap';
 import { Constants } from '../utils/Constants';
 import { API, ContentType } from './API';
 import { Response } from './Response';
@@ -47,11 +48,11 @@ export function get(url: string): Promise<Response> {
  * @param url： 地址
  * @returns ：返回值
  */
-export function post(url: string, params: Map<string, Object>): Promise<Response> {
+export function post(url: string, params: HashMap<string, Object>): Promise<Response> {
   let httpRequest = http.createHttp();
   console.log(Constants.TAG, url)
   let responseResult = httpRequest.request(url, {
-    method: http.RequestMethod.GET,
+    method: http.RequestMethod.POST,
     readTimeout: API.HTTP_READ_TIMEOUT,
     connectTimeout: API.HTTP_READ_TIMEOUT,
     header: {
@@ -86,29 +87,28 @@ export function post(url: string, params: Map<string, Object>): Promise<Response
  * @param url： 地址
  * @returns ：返回值
  */
-export function postForm(url: string, params: Map<string, Object>): Promise<Response> {
+export function postForm(url: string, params: HashMap<string, Object>): Promise<Response> {
   let httpRequest = http.createHttp();
   let mIter = params.entries()
   let temp = mIter.next().value
-  let extraData
+  let extraData = ''
   while (temp != undefined) {
     extraData += `${temp[0]}=${temp[1]}&`
     temp = mIter.next().value
   }
   let responseResult = httpRequest.request(url, {
-    method: http.RequestMethod.GET,
+    method: http.RequestMethod.POST,
     readTimeout: API.HTTP_READ_TIMEOUT,
     connectTimeout: API.HTTP_READ_TIMEOUT,
     header: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': ContentType.formUrlencoded
     },
     extraData: extraData.substring(0, extraData.length - 1)
   });
   let serverData: Response = new Response();
-  // Processes the data and returns.
   return responseResult.then((value: http.HttpResponse) => {
+    console.log(Constants.TAG, 'response result ' + value.result)
     if (value.responseCode === API.HTTP_CODE_200) {
-      // Obtains the returned data.
       let result = `${value.result}`;
       let resultJson: Response = JSON.parse(result);
       if (resultJson.errorCode === API.SERVER_CODE_SUCCESS) {

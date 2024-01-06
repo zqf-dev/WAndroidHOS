@@ -11,7 +11,8 @@ import { Constants } from '../utils/Constants';
 export function getBanner(): Promise<IBannerModel[]> {
   return new Promise((resolve: Function, reject: Function) => {
     get(API.banner).then((data: Response) => {
-      if (data.errorCode === API.SERVER_CODE_SUCCESS) {
+      console.log("Tag", "data " + data)
+      if (data.data && data.errorCode === API.SERVER_CODE_SUCCESS) {
         resolve(data.data);
       } else {
         console.log('getBannerList failed', JSON.stringify(data));
