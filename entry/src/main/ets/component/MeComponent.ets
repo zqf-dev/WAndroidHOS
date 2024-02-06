@@ -3,10 +3,12 @@ import router from '@ohos.router';
 import { MeListBean } from '../model/MeListBean';
 import { Constants } from '../utils/Constants';
 import { preferences } from '../entryability/EntryAbility'
+import picker from '@ohos.file.picker';
 
 @Component
 export struct Me {
   @State name: string = ''
+  @State avatar: string[] = []
 
   aboutToAppear() {
     let pf = preferences.get('username', '');
@@ -20,8 +22,24 @@ export struct Me {
   build() {
     Column() {
       Column() {
-        Image($r('app.media.ic_avatar')).width(80)
+        Image(this.avatar.length > 0 ? this.avatar[0] : $r('app.media.ic_avatar')).width(80)
           .margin({ top: 60, bottom: 10 })
+          .borderRadius(100)
+          .onClick(() => {
+            //选择器使用
+            let selectOptions = new picker.PhotoSelectOptions()
+            //选择的类型 IMAGE_TYPE:图片 VIDEO_TYPE:视频 IMAGE_VIDEO_TYPE:所有
+            selectOptions.MIMEType = picker.PhotoViewMIMETypes.IMAGE_TYPE
+            selectOptions.maxSelectNumber = 1
+            let photoView = new picker.PhotoViewPicker()
+            photoView.select(selectOptions, (err, result) => {
+              if (err) {
+                console.log("err: " + err);
+                return
+              }
+              this.avatar = [...result.photoUris]
+            })
+          })
         Text(this.name ? this.name : '去登录').fontSize(18).fontColor($r('app.color.font_color_white'))
       }
       .onClick(() => {

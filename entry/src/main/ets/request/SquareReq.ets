@@ -1,5 +1,3 @@
-
-import ArrayList from '@ohos.util.ArrayList';
 import { API } from '../http/API';
 import { get } from '../http/Request';
 import { Response } from '../http/Response';
